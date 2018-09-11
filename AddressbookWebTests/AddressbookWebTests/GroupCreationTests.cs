@@ -18,10 +18,7 @@ namespace AddressbookWebTests
         }
 
         [TearDown]
-        public void TearDownTest()
-        {
-            _driver.Quit();
-        }
+        public void TearDownTest() => _driver.Quit();
 
         [Test]
         public void GroupCreationTest()

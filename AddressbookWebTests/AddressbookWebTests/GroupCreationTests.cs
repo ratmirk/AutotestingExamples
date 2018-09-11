@@ -29,8 +29,6 @@ namespace AddressbookWebTests
             _driver.Navigate().GoToUrl(_baseUrl + "/addressbook");
             _driver.FindElement(By.Name("user")).Clear();
             _driver.FindElement(By.Name("user")).SendKeys("admin");
-            _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys("secret");
-            _driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
         }
     }
 }

@@ -23,26 +23,53 @@ namespace AddressbookWebTests
         [Test]
         public void GroupCreationTest()
         {
-            _driver.Navigate().GoToUrl(_baseUrl + "/addressbook");
+            OpenHomePage();
+            Login();
+            GoToGroupsPage();
+            CreateNewGroup();
+            FillGroupForm();
+            SubmitGroupCreation();
+            ReturnToGroupsPage();
+        }
 
+        private void ReturnToGroupsPage()
+        {
+            _driver.FindElement(By.CssSelector("div[class = msgbox] > i > a[href *= group]")).Click();
+        }
+
+        private void SubmitGroupCreation()
+        {
+            _driver.FindElement(By.CssSelector("input[type = submit][name = submit]")).Click();
+        }
+
+        private void FillGroupForm()
+        {
+            _driver.FindElement(By.Name("group_name")).SendKeys("group_name");
+            _driver.FindElement(By.Name("group_header")).SendKeys("group_header");
+            _driver.FindElement(By.Name("group_footer")).SendKeys("group_footer");
+        }
+
+        private void CreateNewGroup()
+        {
+            _driver.FindElement(By.Name("new")).Click();
+        }
+
+        private void GoToGroupsPage()
+        {
+            _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
+        }
+
+        private void Login()
+        {
             _driver.FindElement(By.Name("user")).Clear();
             _driver.FindElement(By.Name("user")).SendKeys("admin");
             _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys("secret");
             _driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
+        }
 
-            _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
-
-            _driver.FindElement(By.Name("new")).Click();
-
-            _driver.FindElement(By.Name("group_name")).SendKeys("group_name");
-            _driver.FindElement(By.Name("group_header")).SendKeys("group_header");
-            _driver.FindElement(By.Name("group_footer")).SendKeys("group_footer");
-
-            _driver.FindElement(By.CssSelector("input[type = submit][name = submit]")).Click();
-
-            _driver.FindElement(By.CssSelector("div[class = msgbox] > i > a[href *= group]")).Click();
-
-
+        private void OpenHomePage()
+        {
+            _driver.Navigate().GoToUrl(_baseUrl + "/addressbook");
         }
     }
 }

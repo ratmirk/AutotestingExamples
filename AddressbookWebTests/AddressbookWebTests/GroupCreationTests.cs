@@ -24,10 +24,10 @@ namespace AddressbookWebTests
         public void GroupCreationTest()
         {
             OpenHomePage();
-            Login();
+            Login("admin", "secret");
             GoToGroupsPage();
             CreateNewGroup();
-            FillGroupForm();
+            FillGroupForm("group_name", "group_header", "group_footer");
             SubmitGroupCreation();
             ReturnToGroupsPage();
         }
@@ -42,11 +42,11 @@ namespace AddressbookWebTests
             _driver.FindElement(By.CssSelector("input[type = submit][name = submit]")).Click();
         }
 
-        private void FillGroupForm()
+        private void FillGroupForm(string groupName, string groupHeader, string groupFooter)
         {
-            _driver.FindElement(By.Name("group_name")).SendKeys("group_name");
-            _driver.FindElement(By.Name("group_header")).SendKeys("group_header");
-            _driver.FindElement(By.Name("group_footer")).SendKeys("group_footer");
+            _driver.FindElement(By.Name("group_name")).SendKeys(groupName);
+            _driver.FindElement(By.Name("group_header")).SendKeys(groupHeader);
+            _driver.FindElement(By.Name("group_footer")).SendKeys(groupFooter);
         }
 
         private void CreateNewGroup()
@@ -59,11 +59,11 @@ namespace AddressbookWebTests
             _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
         }
 
-        private void Login()
+        private void Login(string username, string password)
         {
             _driver.FindElement(By.Name("user")).Clear();
-            _driver.FindElement(By.Name("user")).SendKeys("admin");
-            _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys("secret");
+            _driver.FindElement(By.Name("user")).SendKeys(username);
+            _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys(password);
             _driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
         }
 

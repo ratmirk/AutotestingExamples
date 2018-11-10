@@ -24,7 +24,7 @@ namespace AddressbookWebTests
         public void GroupCreationTest()
         {
             OpenHomePage();
-            Login("admin", "secret");
+            Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             CreateNewGroup();
             FillGroupForm("group_name", "group_header", "group_footer");
@@ -59,11 +59,11 @@ namespace AddressbookWebTests
             _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
         }
 
-        private void Login(string username, string password)
+        private void Login(AccountData account)
         {
             _driver.FindElement(By.Name("user")).Clear();
-            _driver.FindElement(By.Name("user")).SendKeys(username);
-            _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys(password);
+            _driver.FindElement(By.Name("user")).SendKeys(account.Username);
+            _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys(account.Password);
             _driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
         }
 

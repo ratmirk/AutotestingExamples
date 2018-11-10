@@ -62,13 +62,9 @@ namespace AddressbookWebTests
         private void Login(AccountData account)
         {
             _driver.FindElement(By.Name("user")).Clear();
-<<<<<<< HEAD
-            _driver.FindElement(By.Name("user")).SendKeys("admin");
-=======
             _driver.FindElement(By.Name("user")).SendKeys(account.Username);
             _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys(account.Password);
             _driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
->>>>>>> firstLesson
         }
 
         private void OpenHomePage()

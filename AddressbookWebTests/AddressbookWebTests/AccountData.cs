@@ -1,6 +1,6 @@
 ﻿namespace AddressbookWebTests
 {
-    class AccountData
+    internal class AccountData
     {
         public AccountData(string username, string password)
         {

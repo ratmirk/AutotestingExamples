@@ -1,6 +1,6 @@
 ﻿namespace AddressbookWebTests
 {
-    class GroupData
+    internal class GroupData
     {
         public GroupData(string name, string header = "", string footer = "")
         {

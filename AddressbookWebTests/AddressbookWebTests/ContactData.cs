@@ -1,6 +1,6 @@
 ﻿namespace AddressbookWebTests
 {
-    internal class ContactData
+    public class ContactData
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

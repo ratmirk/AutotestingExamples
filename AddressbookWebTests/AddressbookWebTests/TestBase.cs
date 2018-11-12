@@ -10,8 +10,8 @@ namespace AddressbookWebTests
         private string _baseURL;
         protected LoginHelper LoginHelper { get; private set; }
         protected NavigationHepler Navigator { get; private set; }
-        public GroupHelper GroupHelper { get; private set; }
-        public ContactHelper ContactHelper { get; private set; }
+        protected GroupHelper GroupHelper { get; private set; }
+        protected ContactHelper ContactHelper { get; private set; }
 
         [SetUp]
         public void SetUpTests()

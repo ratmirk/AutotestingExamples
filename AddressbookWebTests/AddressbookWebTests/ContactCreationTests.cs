@@ -10,7 +10,7 @@ namespace AddressbookWebTests
         {
             Navigator.GoToHomePage();
             LoginHelper.Login(new AccountData("admin", "secret"));
-            GoToEditContactPage();
+            Navigator.GoToEditContactPage();
             var contact = new ContactData
             {
                 FirstName = "Foo",

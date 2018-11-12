@@ -21,5 +21,10 @@ namespace AddressbookWebTests
         {
             _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
         }
+
+        public void GoToEditContactPage()
+        {
+            _driver.FindElement(By.CssSelector("a[href *= edit]")).Click();
+        }
     }
 }

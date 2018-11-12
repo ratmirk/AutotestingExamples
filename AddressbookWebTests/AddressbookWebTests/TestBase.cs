@@ -26,10 +26,7 @@ namespace AddressbookWebTests
 
 
 
-        protected void GoToEditContactPage()
-        {
-            _driver.FindElement(By.CssSelector("a[href *= edit]")).Click();
-        }
+
 
         protected void CreateNewGroup()
         {

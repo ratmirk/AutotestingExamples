@@ -18,8 +18,8 @@ namespace AddressbookWebTests
                 LastName = "Spam",
                 NickName = "Eggs"
             };
-            FillContactForm(contact);
-            SubmitContactCreation();
+            ContactHelper.FillContactForm(contact);
+            ContactHelper.SubmitContactCreation();
 
         }
     }

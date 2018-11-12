@@ -3,11 +3,11 @@ namespace AddressbookWebTests
 {
     public class HeplerBase
     {
-        protected IWebDriver Driver;
+        protected IWebDriver _driver;
 
         public HeplerBase(IWebDriver driver)
         {
-            Driver = driver;
+            _driver = driver;
         }
     }
 }

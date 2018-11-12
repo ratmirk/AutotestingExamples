@@ -10,8 +10,8 @@ namespace AddressbookWebTests
         [Test]
         public void GroupCreationTest()
         {
-            OpenHomePage();
-            Login(new AccountData("admin", "secret"));
+            GoToHomePage();
+            LoginHelper.Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             CreateNewGroup();
             FillGroupForm(new GroupData("group_name", "group_header", "group_footer"));

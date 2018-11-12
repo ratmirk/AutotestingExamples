@@ -8,28 +8,23 @@ namespace AddressbookWebTests
     {
         private IWebDriver _driver;
         private string _baseUrl;
+        protected LoginHelper LoginHelper { get; private set; }
 
         [SetUp]
         public void SetUpTests()
         {
             _driver = new ChromeDriver();
             _baseUrl = "http://localhost";
+
+            LoginHelper = new  LoginHelper(_driver);
         }
 
         [TearDown]
         public void TearDownTest() => _driver.Quit();
 
-        protected void OpenHomePage()
+        protected void GoToHomePage()
         {
             _driver.Navigate().GoToUrl(_baseUrl + "/addressbook");
-        }
-
-        protected void Login(AccountData account)
-        {
-            _driver.FindElement(By.Name("user")).Clear();
-            _driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            _driver.FindElement(By.CssSelector("input[type = password]")).SendKeys(account.Password);
-            _driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
         }
 
         protected void GoToGroupsPage()

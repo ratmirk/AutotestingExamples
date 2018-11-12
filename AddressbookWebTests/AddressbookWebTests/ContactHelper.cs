@@ -2,13 +2,10 @@
 
 namespace AddressbookWebTests
 {
-    public class ContactHelper
+    public class ContactHelper : HeplerBase
     {
-        private IWebDriver _driver;
-
-        public ContactHelper(IWebDriver driver)
+        public ContactHelper(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
         }
 
         public void FillContactForm(ContactData contact)

@@ -68,6 +68,7 @@
     <Compile Include="GroupCreationTests.cs" />
     <Compile Include="GroupData.cs" />
     <Compile Include="GroupHelper.cs" />
+    <Compile Include="HeplerBase.cs" />
     <Compile Include="LoginHelper.cs" />
     <Compile Include="NavigationHepler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

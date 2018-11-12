@@ -1,14 +1,12 @@
 ﻿using OpenQA.Selenium;
 namespace AddressbookWebTests
 {
-    public class NavigationHepler
+    public class NavigationHepler : HeplerBase
     {
-        private IWebDriver _driver;
         private string _baseURL;
 
-        public NavigationHepler(IWebDriver driver, string baseURL)
+        public NavigationHepler(IWebDriver driver, string baseURL) : base(driver)
         {
-            _driver = driver;
             _baseURL = baseURL;
         }
 

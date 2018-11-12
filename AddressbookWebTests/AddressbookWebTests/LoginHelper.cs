@@ -2,13 +2,10 @@
 
 namespace AddressbookWebTests
 {
-    public class LoginHelper
+    public class LoginHelper : HeplerBase
     {
-        private IWebDriver _driver;
-
-        public LoginHelper(IWebDriver driver)
+        public LoginHelper(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
         }
 
         public void Login(AccountData account)

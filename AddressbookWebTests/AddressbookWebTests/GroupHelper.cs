@@ -2,13 +2,10 @@
 
 namespace AddressbookWebTests
 {
-    public class GroupHelper
+    public class GroupHelper : HeplerBase
     {
-        private IWebDriver _driver;
-
-        public GroupHelper(IWebDriver driver)
+        public GroupHelper(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
         }
 
         public void CreateNewGroup()

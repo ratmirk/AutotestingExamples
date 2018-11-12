@@ -7,30 +7,24 @@ namespace AddressbookWebTests
     public class TestBase
     {
         private IWebDriver _driver;
-        private string _baseUrl;
+        private string _baseURL;
         protected LoginHelper LoginHelper { get; private set; }
+        protected NavigationHepler Navigator { get; private set; }
 
         [SetUp]
         public void SetUpTests()
         {
             _driver = new ChromeDriver();
-            _baseUrl = "http://localhost";
+            _baseURL = "http://localhost";
 
             LoginHelper = new  LoginHelper(_driver);
+            Navigator = new NavigationHepler(_driver, _baseURL);
         }
 
         [TearDown]
         public void TearDownTest() => _driver.Quit();
 
-        protected void GoToHomePage()
-        {
-            _driver.Navigate().GoToUrl(_baseUrl + "/addressbook");
-        }
 
-        protected void GoToGroupsPage()
-        {
-            _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
-        }
 
         protected void GoToEditContactPage()
         {

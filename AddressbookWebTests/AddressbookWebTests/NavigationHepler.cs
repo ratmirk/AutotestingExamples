@@ -3,26 +3,26 @@ namespace AddressbookWebTests
 {
     public class NavigationHepler : HeplerBase
     {
-        private string _baseURL;
+        private string _baseUrl;
 
-        public NavigationHepler(IWebDriver driver, string baseURL) : base(driver)
+        public NavigationHepler(IWebDriver driver, string baseUrl) : base(driver)
         {
-            _baseURL = baseURL;
+            _baseUrl = baseUrl;
         }
 
         public void GoToHomePage()
         {
-            _driver.Navigate().GoToUrl(_baseURL + "/addressbook");
+            Driver.Navigate().GoToUrl(_baseUrl + "/addressbook");
         }
 
         public void GoToGroupsPage()
         {
-            _driver.FindElement(By.CssSelector("a[href *= group]")).Click();
+            Driver.FindElement(By.CssSelector("a[href *= group]")).Click();
         }
 
         public void GoToEditContactPage()
         {
-            _driver.FindElement(By.CssSelector("a[href *= edit]")).Click();
+            Driver.FindElement(By.CssSelector("a[href *= edit]")).Click();
         }
     }
 }

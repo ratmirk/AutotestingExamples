@@ -10,24 +10,24 @@ namespace AddressbookWebTests
 
         public void CreateNewGroup()
         {
-            _driver.FindElement(By.Name("new")).Click();
+            Driver.FindElement(By.Name("new")).Click();
         }
 
         public void FillGroupForm(GroupData group)
         {
-            _driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            _driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            _driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
+            Driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
+            Driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
+            Driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
         }
 
         public void SubmitGroupCreation()
         {
-            _driver.FindElement(By.CssSelector("input[type = submit][name = submit]")).Click();
+            Driver.FindElement(By.CssSelector("input[type = submit][name = submit]")).Click();
         }
 
         public void ReturnToGroupsPage()
         {
-            _driver.FindElement(By.CssSelector("div[class = msgbox] > i > a[href *= group]")).Click();
+            Driver.FindElement(By.CssSelector("div[class = msgbox] > i > a[href *= group]")).Click();
         }
     }
 }

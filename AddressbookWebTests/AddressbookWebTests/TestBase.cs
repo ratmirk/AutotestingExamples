@@ -7,7 +7,7 @@ namespace AddressbookWebTests
     public class TestBase
     {
         private IWebDriver _driver;
-        private string _baseURL;
+        private string _baseUrl;
         protected LoginHelper LoginHelper { get; private set; }
         protected NavigationHepler Navigator { get; private set; }
         protected GroupHelper GroupHelper { get; private set; }
@@ -17,10 +17,10 @@ namespace AddressbookWebTests
         public void SetUpTests()
         {
             _driver = new ChromeDriver();
-            _baseURL = "http://localhost";
+            _baseUrl = "http://localhost";
 
             LoginHelper = new  LoginHelper(_driver);
-            Navigator = new NavigationHepler(_driver, _baseURL);
+            Navigator = new NavigationHepler(_driver, _baseUrl);
             GroupHelper = new GroupHelper(_driver);
             ContactHelper = new ContactHelper(_driver);
         }

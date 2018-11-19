@@ -5,7 +5,7 @@ namespace AddressbookWebTests
     {
         protected readonly IWebDriver Driver;
 
-        public HeplerBase(IWebDriver driver)
+        protected HeplerBase(IWebDriver driver)
         {
             Driver = driver;
         }

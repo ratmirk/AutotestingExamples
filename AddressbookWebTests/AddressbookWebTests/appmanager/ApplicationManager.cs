@@ -9,20 +9,20 @@ namespace AddressbookWebTests
         private readonly IWebDriver _driver;
         private readonly string _baseUrl;
 
-        public LoginHelper LoginHelper { get; }
+        public LoginHelper Auth { get; }
         public NavigationHepler Navigator { get; }
-        public GroupHelper GroupHelper { get; }
-        public ContactHelper ContactHelper { get; }
+        public GroupHelper Groups { get; }
+        public ContactHelper Contacts { get; }
 
 
         public ApplicationManager()
         {
             _driver = new ChromeDriver();
             _baseUrl = "http://localhost";
-            LoginHelper = new LoginHelper(_driver);
+            Auth = new LoginHelper(_driver);
             Navigator = new NavigationHepler(_driver, _baseUrl);
-            GroupHelper = new GroupHelper(_driver);
-            ContactHelper = new ContactHelper(_driver);
+            Groups = new GroupHelper(_driver);
+            Contacts = new ContactHelper(_driver);
         }
 
         public void Stop() => _driver.Quit();

@@ -9,7 +9,7 @@ namespace AddressbookWebTests
         public void ContactCreationTest()
         {
             Application.Navigator.GoToHomePage();
-            Application.LoginHelper.Login(new AccountData("admin", "secret"));
+            Application.Auth.Login(new AccountData("admin", "secret"));
             Application.Navigator.GoToEditContactPage();
             var contact = new ContactData
             {
@@ -18,8 +18,8 @@ namespace AddressbookWebTests
                 LastName = "Spam",
                 NickName = "Eggs"
             };
-            Application.ContactHelper.FillContactForm(contact);
-            Application.ContactHelper.SubmitContactCreation();
+            Application.Contacts.FillContactForm(contact);
+            Application.Contacts.SubmitContactCreation();
         }
     }
 }

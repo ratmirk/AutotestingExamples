@@ -9,12 +9,12 @@ namespace AddressbookWebTests
         public void GroupCreationTest()
         {
             Application.Navigator.GoToHomePage();
-            Application.LoginHelper.Login(new AccountData("admin", "secret"));
+            Application.Auth.Login(new AccountData("admin", "secret"));
             Application.Navigator.GoToGroupsPage();
-            Application.GroupHelper.CreateNewGroup();
-            Application.GroupHelper.FillGroupForm(new GroupData("group_name", "group_header", "group_footer"));
-            Application.GroupHelper.SubmitGroupCreation();
-            Application.GroupHelper.ReturnToGroupsPage();
+            Application.Groups.CreateNewGroup();
+            Application.Groups.FillGroupForm(new GroupData("group_name", "group_header", "group_footer"));
+            Application.Groups.SubmitGroupCreation();
+            Application.Groups.ReturnToGroupsPage();
         }
     }
 }

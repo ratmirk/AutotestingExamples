@@ -9,7 +9,7 @@
             Footer = footer;
         }
 
-        public string Name { get;}
+        public string Name { get; }
         public string Header { get; }
         public string Footer { get; }
     }

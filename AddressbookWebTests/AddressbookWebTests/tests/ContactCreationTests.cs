@@ -20,7 +20,6 @@ namespace AddressbookWebTests
             };
             Application.ContactHelper.FillContactForm(contact);
             Application.ContactHelper.SubmitContactCreation();
-
         }
     }
 }

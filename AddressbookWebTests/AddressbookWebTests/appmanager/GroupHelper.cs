@@ -4,9 +4,7 @@ namespace AddressbookWebTests
 {
     public class GroupHelper : HeplerBase
     {
-        public GroupHelper(IWebDriver driver) : base(driver)
-        {
-        }
+        public GroupHelper(IWebDriver driver) : base(driver) { }
 
         public void CreateNewGroup()
         {

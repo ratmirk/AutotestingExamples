@@ -6,25 +6,27 @@ namespace AddressbookWebTests
 {
     public class ApplicationManager
     {
-        private readonly IWebDriver _driver;
         private readonly string _baseUrl;
+        public IWebDriver Driver { get; }
 
         public LoginHelper Auth { get; }
         public NavigationHepler Navigator { get; }
         public GroupHelper Groups { get; }
         public ContactHelper Contacts { get; }
 
+        
 
         public ApplicationManager()
         {
-            _driver = new ChromeDriver();
+            Driver = new ChromeDriver();
             _baseUrl = "http://localhost";
-            Auth = new LoginHelper(_driver);
-            Navigator = new NavigationHepler(_driver, _baseUrl);
-            Groups = new GroupHelper(_driver);
-            Contacts = new ContactHelper(_driver);
+
+            Auth = new LoginHelper(this);
+            Navigator = new NavigationHepler(this, _baseUrl);
+            Groups = new GroupHelper(this);
+            Contacts = new ContactHelper(this);
         }
 
-        public void Stop() => _driver.Quit();
+        public void Stop() => Driver.Quit();
     }
 }

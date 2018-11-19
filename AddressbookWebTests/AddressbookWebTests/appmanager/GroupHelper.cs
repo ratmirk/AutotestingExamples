@@ -4,28 +4,42 @@ namespace AddressbookWebTests
 {
     public class GroupHelper : HeplerBase
     {
-        public GroupHelper(IWebDriver driver) : base(driver) { }
+        public GroupHelper(ApplicationManager manager) : base(manager) { }
 
-        public void CreateNewGroup()
+        public GroupHelper InitGroupCreation()
         {
             Driver.FindElement(By.Name("new")).Click();
+            return this;
         }
 
-        public void FillGroupForm(GroupData group)
+        public GroupHelper Create(GroupData group)
+        {
+            Manager.Navigator.GoToGroupsPage();
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper FillGroupForm(GroupData group)
         {
             Driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
             Driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
             Driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
+            return this;
         }
 
-        public void SubmitGroupCreation()
+        public GroupHelper SubmitGroupCreation()
         {
             Driver.FindElement(By.CssSelector("input[type = submit][name = submit]")).Click();
+            return this;
         }
 
-        public void ReturnToGroupsPage()
+        public GroupHelper ReturnToGroupsPage()
         {
             Driver.FindElement(By.CssSelector("div[class = msgbox] > i > a[href *= group]")).Click();
+            return this;
         }
     }
 }

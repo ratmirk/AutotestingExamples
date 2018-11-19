@@ -5,10 +5,12 @@ namespace AddressbookWebTests
     public class HeplerBase
     {
         protected readonly IWebDriver Driver;
+        protected readonly ApplicationManager Manager;
 
-        protected HeplerBase(IWebDriver driver)
+        protected HeplerBase(ApplicationManager manager)
         {
-            Driver = driver;
+            Driver = manager.Driver;
+            Manager = manager;
         }
     }
 }

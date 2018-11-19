@@ -4,7 +4,7 @@ namespace AddressbookWebTests
 {
     public class LoginHelper : HeplerBase
     {
-        public LoginHelper(IWebDriver driver) : base(driver) { }
+        public LoginHelper(ApplicationManager manager) : base(manager) { }
 
         public void Login(AccountData account)
         {

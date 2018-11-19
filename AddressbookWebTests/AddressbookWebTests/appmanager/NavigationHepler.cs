@@ -6,7 +6,7 @@ namespace AddressbookWebTests
     {
         private string _baseUrl;
 
-        public NavigationHepler(IWebDriver driver, string baseUrl) : base(driver)
+        public NavigationHepler(ApplicationManager manager, string baseUrl) : base(manager)
         {
             _baseUrl = baseUrl;
         }

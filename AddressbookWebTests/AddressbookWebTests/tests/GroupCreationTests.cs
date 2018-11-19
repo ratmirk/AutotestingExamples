@@ -8,13 +8,17 @@ namespace AddressbookWebTests
         [Test]
         public void GroupCreationTest()
         {
-            Application.Navigator.GoToHomePage();
-            Application.Auth.Login(new AccountData("admin", "secret"));
-            Application.Navigator.GoToGroupsPage();
-            Application.Groups.CreateNewGroup();
-            Application.Groups.FillGroupForm(new GroupData("group_name", "group_header", "group_footer"));
-            Application.Groups.SubmitGroupCreation();
-            Application.Groups.ReturnToGroupsPage();
+            var group = new GroupData("group_name", "group_header", "group_footer");
+
+            Application.Groups.Create(group);
+        }
+
+        [Test]
+        public void EmptyGroupCreationTest()
+        {
+            var group = new GroupData(string.Empty);
+
+            Application.Groups.Create(group);
         }
     }
 }

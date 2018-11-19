@@ -4,7 +4,7 @@ namespace AddressbookWebTests
 {
     public class ContactHelper : HeplerBase
     {
-        public ContactHelper(IWebDriver driver) : base(driver) { }
+        public ContactHelper(ApplicationManager manager) : base(manager) { }
 
         public void FillContactForm(ContactData contact)
         {

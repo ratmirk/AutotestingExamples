@@ -22,6 +22,27 @@ namespace AddressbookWebTests
             return this;
         }
 
+        public GroupHelper Remove(int p)
+        {
+            Manager.Navigator.GoToGroupsPage();
+            SelectGroup(p);
+            RemoveGroup();
+            ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper RemoveGroup()
+        {
+            Driver.FindElement(By.Name("delete")).Click();
+            return this;
+        }
+
+        public GroupHelper SelectGroup(int p)
+        {
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{p}]")).Click();
+            return this;
+        }
+
         public GroupHelper FillGroupForm(GroupData group)
         {
             Driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
@@ -41,5 +62,7 @@ namespace AddressbookWebTests
             Driver.FindElement(By.CssSelector("div[class = msgbox] > i > a[href *= group]")).Click();
             return this;
         }
+
+
     }
 }

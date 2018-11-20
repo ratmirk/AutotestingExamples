@@ -16,9 +16,10 @@ namespace AddressbookWebTests
 
         public ContactHelper Remove(int p)
         {
-            Manager.Navigator.GoToEditContactPage();
             SelectContact(p);
             RemoveContact();
+            IAlert alert = Driver.SwitchTo().Alert();
+            alert.Accept();
             return this;
         }
 
@@ -40,7 +41,7 @@ namespace AddressbookWebTests
 
         public ContactHelper RemoveContact()
         {
-            Driver.FindElement(By.Name("delete")).Click();
+            Driver.FindElement(By.CssSelector("input[type = button][onclick = 'DeleteSel()']")).Click();
             return this;
         }
 

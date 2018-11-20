@@ -18,8 +18,7 @@ namespace AddressbookWebTests
         {
             SelectContact(p);
             RemoveContact();
-            IAlert alert = Driver.SwitchTo().Alert();
-            alert.Accept();
+            AcceptAlert();
             return this;
         }
 

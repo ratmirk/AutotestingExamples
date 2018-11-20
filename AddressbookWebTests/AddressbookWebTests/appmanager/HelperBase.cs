@@ -12,5 +12,12 @@ namespace AddressbookWebTests
             Driver = manager.Driver;
             Manager = manager;
         }
+
+        protected HelperBase AcceptAlert()
+        {
+            Driver.SwitchTo().Alert().Accept();
+            Driver.SwitchTo().DefaultContent();
+            return this;
+        }
     }
 }

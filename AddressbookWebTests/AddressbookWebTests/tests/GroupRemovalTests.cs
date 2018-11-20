@@ -10,6 +10,5 @@ namespace AddressbookWebTests
         {
             Application.Groups.Remove(1);
         }
-
     }
 }

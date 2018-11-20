@@ -14,7 +14,6 @@ namespace AddressbookWebTests
         public GroupHelper Groups { get; }
         public ContactHelper Contacts { get; }
 
-        
 
         public ApplicationManager()
         {

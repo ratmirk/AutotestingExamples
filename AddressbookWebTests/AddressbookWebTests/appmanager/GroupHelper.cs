@@ -2,7 +2,7 @@
 
 namespace AddressbookWebTests
 {
-    public class GroupHelper : HeplerBase
+    public class GroupHelper : HelperBase
     {
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 

@@ -2,11 +2,11 @@
 
 namespace AddressbookWebTests
 {
-    public class NavigationHepler : HeplerBase
+    public class NavigationHelper : HelperBase
     {
         private string _baseUrl;
 
-        public NavigationHepler(ApplicationManager manager, string baseUrl) : base(manager)
+        public NavigationHelper(ApplicationManager manager, string baseUrl) : base(manager)
         {
             _baseUrl = baseUrl;
         }

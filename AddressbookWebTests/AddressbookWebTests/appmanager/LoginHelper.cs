@@ -2,7 +2,7 @@
 
 namespace AddressbookWebTests
 {
-    public class LoginHelper : HeplerBase
+    public class LoginHelper : HelperBase
     {
         public LoginHelper(ApplicationManager manager) : base(manager) { }
 

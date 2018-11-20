@@ -10,7 +10,7 @@ namespace AddressbookWebTests
         public IWebDriver Driver { get; }
 
         public LoginHelper Auth { get; }
-        public NavigationHepler Navigator { get; }
+        public NavigationHelper Navigator { get; }
         public GroupHelper Groups { get; }
         public ContactHelper Contacts { get; }
 
@@ -22,7 +22,7 @@ namespace AddressbookWebTests
             _baseUrl = "http://localhost";
 
             Auth = new LoginHelper(this);
-            Navigator = new NavigationHepler(this, _baseUrl);
+            Navigator = new NavigationHelper(this, _baseUrl);
             Groups = new GroupHelper(this);
             Contacts = new ContactHelper(this);
         }

@@ -8,7 +8,6 @@ namespace AddressbookWebTests
         [Test]
         public void ContactCreationTest()
         {
-            Application.Navigator.GoToEditContactPage();
             var contact = new ContactData
             {
                 FirstName = "Foo",
@@ -16,8 +15,24 @@ namespace AddressbookWebTests
                 LastName = "Spam",
                 NickName = "Eggs"
             };
-            Application.Contacts.FillContactForm(contact);
-            Application.Contacts.SubmitContactCreation();
+
+
+            Application.Contacts.Create(contact);
+        }
+
+        [Test]
+        public void EmptyContactCreationTest()
+        {
+            var contact = new ContactData
+            {
+                FirstName = "",
+                MiddleName = "",
+                LastName = "",
+                NickName = ""
+            };
+
+            Application.Navigator.GoToEditContactPage();
+            Application.Contacts.Create(contact);
         }
     }
 }

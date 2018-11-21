@@ -19,6 +19,7 @@ namespace AddressbookWebTests
             SelectContact(p);
             RemoveContact();
             AcceptAlert();
+            Manager.Navigator.GoToHomePage();
             return this;
         }
 

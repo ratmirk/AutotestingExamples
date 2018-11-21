@@ -6,12 +6,6 @@ namespace AddressbookWebTests
     {
         public GroupHelper(ApplicationManager manager) : base(manager) { }
 
-        public GroupHelper InitGroupCreation()
-        {
-            Driver.FindElement(By.Name("new")).Click();
-            return this;
-        }
-
         public GroupHelper Create(GroupData group)
         {
             Manager.Navigator.GoToGroupsPage();
@@ -22,12 +16,29 @@ namespace AddressbookWebTests
             return this;
         }
 
+        public GroupHelper Modify(int p, GroupData newData)
+        {
+            Manager.Navigator.GoToGroupsPage();
+            SelectGroup(p);
+            InitGroupModificattion();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            ReturnToGroupsPage();
+            return this;
+        }
+
         public GroupHelper Remove(int p)
         {
             Manager.Navigator.GoToGroupsPage();
             SelectGroup(p);
             RemoveGroup();
             ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper InitGroupCreation()
+        {
+            Driver.FindElement(By.Name("new")).Click();
             return this;
         }
 
@@ -63,6 +74,16 @@ namespace AddressbookWebTests
             return this;
         }
 
+        public GroupHelper SubmitGroupModification()
+        {
+            Driver.FindElement(By.CssSelector("input[type = submit][name = update]")).Click();
+            return this;
+        }
 
+        public GroupHelper InitGroupModificattion()
+        {
+            Driver.FindElement(By.Name("edit")).Click();
+            return this;
+        }
     }
 }

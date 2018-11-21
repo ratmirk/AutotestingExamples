@@ -13,6 +13,25 @@ namespace AddressbookWebTests
             SubmitContactCreation();
             return this;
         }
+        public ContactHelper Modify(ContactData newContactData)
+        {
+            Edit();
+            FillContactForm(newContactData);
+            SubmitContactModification();
+            return this;
+        }
+
+        public ContactHelper Edit()
+        {
+            Driver.FindElement(By.CssSelector("td[class='center'] a[href*='edit']")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            Driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
 
         public ContactHelper Remove(int p)
         {
@@ -25,9 +44,13 @@ namespace AddressbookWebTests
 
         public ContactHelper FillContactForm(ContactData contact)
         {
+            Driver.FindElement(By.Name("firstname")).Clear();
             Driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
+            Driver.FindElement(By.Name("middlename")).Clear(); 
             Driver.FindElement(By.Name("middlename")).SendKeys(contact.MiddleName);
+            Driver.FindElement(By.Name("lastname")).Clear();
             Driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
+            Driver.FindElement(By.Name("nickname")).Clear();
             Driver.FindElement(By.Name("nickname")).SendKeys(contact.NickName);
             return this;
         }
@@ -50,5 +73,7 @@ namespace AddressbookWebTests
             Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{p}]")).Click();
             return this;
         }
+
+
     }
 }

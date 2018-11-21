@@ -16,12 +16,12 @@ namespace AddressbookWebTests
             return this;
         }
 
-        public GroupHelper Modify(int p, GroupData newData)
+        public GroupHelper Modify(int p, GroupData newGroupData)
         {
             Manager.Navigator.GoToGroupsPage();
             SelectGroup(p);
             InitGroupModificattion();
-            FillGroupForm(newData);
+            FillGroupForm(newGroupData);
             SubmitGroupModification();
             ReturnToGroupsPage();
             return this;

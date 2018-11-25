@@ -8,9 +8,8 @@ namespace AddressbookWebTests
 
         public void Login(AccountData account)
         {
-            Driver.FindElement(By.Name("user")).Clear();
-            Driver.FindElement(By.Name("user")).SendKeys(account.Username);
-            Driver.FindElement(By.CssSelector("input[type = password]")).SendKeys(account.Password);
+            Type(By.Name("user"), account.Username);
+            Type(By.CssSelector("input[type = password]"), account.Password);
             Driver.FindElement(By.CssSelector("input[type = submit][value = Login]")).Click();
         }
     }

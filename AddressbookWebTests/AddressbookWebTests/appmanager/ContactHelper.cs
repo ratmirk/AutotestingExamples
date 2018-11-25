@@ -44,14 +44,10 @@ namespace AddressbookWebTests
 
         public ContactHelper FillContactForm(ContactData contact)
         {
-            Driver.FindElement(By.Name("firstname")).Clear();
-            Driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
-            Driver.FindElement(By.Name("middlename")).Clear(); 
-            Driver.FindElement(By.Name("middlename")).SendKeys(contact.MiddleName);
-            Driver.FindElement(By.Name("lastname")).Clear();
-            Driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
-            Driver.FindElement(By.Name("nickname")).Clear();
-            Driver.FindElement(By.Name("nickname")).SendKeys(contact.NickName);
+            Type(By.Name("firstname"), contact.FirstName);
+            Type(By.Name("middlename"), contact.MiddleName);
+            Type(By.Name("lastname"), contact.LastName);
+            Type(By.Name("nickname"), contact.NickName);
             return this;
         }
 

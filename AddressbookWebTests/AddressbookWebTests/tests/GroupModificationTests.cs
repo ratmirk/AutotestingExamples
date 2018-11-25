@@ -12,5 +12,13 @@ namespace AddressbookWebTests
 
             Application.Groups.Modify(1, newGroupData);
         }
+
+        [Test]
+        public void GroupChangeNameTest()
+        {
+            var newGroupData = new GroupData("changed_only_group_name", null, null);
+
+            Application.Groups.Modify(1, newGroupData);
+        }
     }
 }

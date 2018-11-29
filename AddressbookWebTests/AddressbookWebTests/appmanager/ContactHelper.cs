@@ -8,13 +8,16 @@ namespace AddressbookWebTests
 
         public ContactHelper Create(ContactData contact)
         {
+            Manager.Navigator.GoToHomePage();
             Manager.Navigator.GoToEditContactPage();
             FillContactForm(contact);
             SubmitContactCreation();
             return this;
         }
+
         public ContactHelper Modify(ContactData newContactData)
         {
+            Manager.Navigator.GoToHomePage();
             Edit();
             FillContactForm(newContactData);
             SubmitContactModification();
@@ -35,6 +38,7 @@ namespace AddressbookWebTests
 
         public ContactHelper Remove(int p)
         {
+            Manager.Navigator.GoToHomePage();
             SelectContact(p);
             RemoveContact();
             AcceptAlert();
@@ -69,7 +73,5 @@ namespace AddressbookWebTests
             Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{p}]")).Click();
             return this;
         }
-
-
     }
 }

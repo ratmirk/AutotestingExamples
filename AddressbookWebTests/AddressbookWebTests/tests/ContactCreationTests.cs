@@ -30,8 +30,7 @@ namespace AddressbookWebTests
                 LastName = "",
                 NickName = ""
             };
-
-            Application.Navigator.GoToEditContactPage();
+            
             Application.Contacts.Create(contact);
         }
     }

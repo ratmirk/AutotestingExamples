@@ -9,6 +9,11 @@
             Footer = footer;
         }
 
+        public GroupData()
+        {
+            Name = "Autocreated";
+        }
+
         public string Name { get; }
         public string Header { get; }
         public string Footer { get; }

@@ -22,7 +22,7 @@ namespace AddressbookWebTests
 
         public void GoToGroupsPage()
         {
-            if (Driver.Url == _baseUrl + "/addressbook/group.php" && IsElementPresent(By.Name("new")))
+            if (Driver.Url == _baseUrl + "/addressbook/group.php" && IsElementPresent(By.Name("submit")))
             {
                 return;
             }
@@ -30,8 +30,13 @@ namespace AddressbookWebTests
             Driver.FindElement(By.CssSelector("a[href *= group]")).Click();
         }
 
-        public void GoToEditContactPage()
+        public void GoToAddNewContactPage()
         {
+            if (Driver.Url == _baseUrl + "/addressbook/edit.php" && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
+
             Driver.FindElement(By.CssSelector("a[href *= edit]")).Click();
         }
     }

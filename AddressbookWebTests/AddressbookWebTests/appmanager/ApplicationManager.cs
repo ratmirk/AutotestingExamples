@@ -40,7 +40,13 @@ namespace AddressbookWebTests
 
         public static ApplicationManager GetInstance()
         {
-            if (!Application.IsValueCreated) Application.Value = new ApplicationManager();
+            if (!Application.IsValueCreated)
+            {
+                var newInsatnce = new ApplicationManager();
+                newInsatnce.Navigator.GoToHomePage();
+                Application.Value = newInsatnce;
+            }
+
             return Application.Value;
         }
     }

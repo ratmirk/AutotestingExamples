@@ -28,5 +28,17 @@ namespace AddressbookWebTests
                 Driver.FindElement(locator).SendKeys(text);
             }
         }
+
+        public bool IsElementPresent(By locator)
+        {
+            try
+            {
+                Driver.FindElement(locator);
+                return true;
+            } catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
     }
 }

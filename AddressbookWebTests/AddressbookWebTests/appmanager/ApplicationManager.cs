@@ -20,7 +20,9 @@ namespace AddressbookWebTests
 
         public ApplicationManager()
         {
-            Driver = new ChromeDriver();
+            var option = new ChromeOptions();
+            option.AddArguments("headless");
+            Driver = new ChromeDriver(option);
             _baseUrl = "http://localhost";
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
 

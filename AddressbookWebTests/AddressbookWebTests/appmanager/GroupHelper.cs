@@ -19,6 +19,7 @@ namespace AddressbookWebTests
         public GroupHelper Modify(int p, GroupData newGroupData)
         {
             Manager.Navigator.GoToGroupsPage();
+            CreateGroupIfNotExist();
             SelectGroup(p);
             InitGroupModificattion();
             FillGroupForm(newGroupData);
@@ -30,8 +31,21 @@ namespace AddressbookWebTests
         public GroupHelper Remove(int p)
         {
             Manager.Navigator.GoToGroupsPage();
+            CreateGroupIfNotExist();
             SelectGroup(p);
             RemoveGroup();
+            ReturnToGroupsPage();
+            return this;
+        }
+
+        public GroupHelper CreateGroupIfNotExist()
+        {
+            if (IsGroupExist())
+            {
+                return this;
+            }
+
+            Create(new GroupData());
             ReturnToGroupsPage();
             return this;
         }
@@ -84,6 +98,11 @@ namespace AddressbookWebTests
         {
             Driver.FindElement(By.Name("edit")).Click();
             return this;
+        }
+
+        public bool IsGroupExist()
+        {
+            return IsElementPresent(By.ClassName("group"));
         }
     }
 }

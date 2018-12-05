@@ -4,17 +4,12 @@ namespace AddressbookWebTests
 {
     public class TestBase
     {
-        protected ApplicationManager Application;
+        protected ApplicationManager Application { get; private set; }
 
         [SetUp]
-        public void SetUpTests()
+        public void SetUpLogin()
         {
-            Application = new ApplicationManager();
-            Application.Navigator.GoToHomePage();
-            Application.Auth.Login(new AccountData("admin", "secret"));
+            Application = ApplicationManager.GetInstance();
         }
-
-        [TearDown]
-        public void TeardownTest() => Application.Stop();
     }
 }

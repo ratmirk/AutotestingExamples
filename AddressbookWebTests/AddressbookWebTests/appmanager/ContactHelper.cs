@@ -8,13 +8,18 @@ namespace AddressbookWebTests
 
         public ContactHelper Create(ContactData contact)
         {
-            Manager.Navigator.GoToEditContactPage();
+            Manager.Navigator.GoToHomePage();
+            Manager.Navigator.GoToAddNewContactPage();
             FillContactForm(contact);
             SubmitContactCreation();
+            Manager.Navigator.GoToHomePage();
             return this;
         }
+
         public ContactHelper Modify(ContactData newContactData)
         {
+            Manager.Navigator.GoToHomePage();
+            CreateContactIfNotExist();
             Edit();
             FillContactForm(newContactData);
             SubmitContactModification();
@@ -35,9 +40,23 @@ namespace AddressbookWebTests
 
         public ContactHelper Remove(int p)
         {
+            Manager.Navigator.GoToHomePage();
+            CreateContactIfNotExist();
             SelectContact(p);
             RemoveContact();
             AcceptAlert();
+            Manager.Navigator.GoToHomePage();
+            return this;
+        }
+
+        public ContactHelper CreateContactIfNotExist()
+        {
+            if (IsContactExist())
+            {
+                return this;
+            }
+
+            Create(new ContactData());
             Manager.Navigator.GoToHomePage();
             return this;
         }
@@ -70,6 +89,9 @@ namespace AddressbookWebTests
             return this;
         }
 
-
+        public bool IsContactExist()
+        {
+            return IsElementPresent(By.Name("selected[]"));
+        }
     }
 }

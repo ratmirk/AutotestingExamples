@@ -3,7 +3,7 @@
 namespace AddressbookWebTests
 {
     [TestFixture]
-    public class ContactCreationTests : TestBase
+    public class ContactCreationTests : AuthTestBase
     {
         [Test]
         public void ContactCreationTest()
@@ -30,8 +30,7 @@ namespace AddressbookWebTests
                 LastName = "",
                 NickName = ""
             };
-
-            Application.Navigator.GoToEditContactPage();
+            
             Application.Contacts.Create(contact);
         }
     }

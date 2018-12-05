@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -8,17 +9,11 @@ namespace AddressbookWebTests
 {
     public class ApplicationManager
     {
+        private static readonly ThreadLocal<ApplicationManager> Application = new ThreadLocal<ApplicationManager>();
         private readonly string _baseUrl;
-        public IWebDriver Driver { get; }
-        public WebDriverWait Wait { get; }
-
-        public LoginHelper Auth { get; }
-        public NavigationHelper Navigator { get; }
-        public GroupHelper Groups { get; }
-        public ContactHelper Contacts { get; }
 
 
-        public ApplicationManager()
+        private ApplicationManager()
         {
             var option = new ChromeOptions();
             option.AddArguments("headless");
@@ -32,6 +27,29 @@ namespace AddressbookWebTests
             Contacts = new ContactHelper(this);
         }
 
-        public void Stop() => Driver.Quit();
+        public IWebDriver Driver { get; }
+        public WebDriverWait Wait { get; }
+
+        public LoginHelper Auth { get; }
+        public NavigationHelper Navigator { get; }
+        public GroupHelper Groups { get; }
+        public ContactHelper Contacts { get; }
+
+        ~ApplicationManager()
+        {
+            Driver.Quit();
+        }
+
+        public static ApplicationManager GetInstance()
+        {
+            if (!Application.IsValueCreated)
+            {
+                var newInsatnce = new ApplicationManager();
+                newInsatnce.Navigator.GoToHomePage();
+                Application.Value = newInsatnce;
+            }
+
+            return Application.Value;
+        }
     }
 }

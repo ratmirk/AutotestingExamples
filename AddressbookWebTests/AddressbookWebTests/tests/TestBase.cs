@@ -4,7 +4,7 @@ namespace AddressbookWebTests
 {
     public class TestBase
     {
-        protected ApplicationManager Application { get; private set; }
+        protected ApplicationManager Application;
 
         [SetUp]
         public void SetUpLogin()

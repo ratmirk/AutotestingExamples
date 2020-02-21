@@ -10,19 +10,17 @@ namespace AddressbookWebTests
     public class ApplicationManager
     {
         private static readonly ThreadLocal<ApplicationManager> Application = new ThreadLocal<ApplicationManager>();
-        private readonly string _baseUrl;
-
+        private const string BaseUrl = "http://localhost";
 
         private ApplicationManager()
         {
             var option = new ChromeOptions();
             option.AddArguments("headless");
             Driver = new ChromeDriver(option);
-            _baseUrl = "http://localhost";
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
 
             Auth = new LoginHelper(this);
-            Navigator = new NavigationHelper(this, _baseUrl);
+            Navigator = new NavigationHelper(this, BaseUrl);
             Groups = new GroupHelper(this);
             Contacts = new ContactHelper(this);
         }

@@ -35,7 +35,7 @@ namespace AddressbookWebTests
             // Act
             Application.Groups.Create(group);
 
-            // Assert using Fluent AssertionsЫ
+            // Assert using Fluent Assertions
             GroupList.Should()
                 .BeEquivalentTo(Application.Groups.GetGroupList(), options => options.Including(x => x.Name));
         }

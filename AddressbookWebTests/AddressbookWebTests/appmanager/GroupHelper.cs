@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using System.Collections.Generic;
+using System.Linq;
+using OpenQA.Selenium;
 
 namespace AddressbookWebTests
 {
@@ -21,7 +23,7 @@ namespace AddressbookWebTests
             Manager.Navigator.GoToGroupsPage();
             CreateGroupIfNotExist();
             SelectGroup(p);
-            InitGroupModificattion();
+            InitGroupModification();
             FillGroupForm(newGroupData);
             SubmitGroupModification();
             ReturnToGroupsPage();
@@ -94,10 +96,18 @@ namespace AddressbookWebTests
             return this;
         }
 
-        public GroupHelper InitGroupModificattion()
+        public GroupHelper InitGroupModification()
         {
             Driver.FindElement(By.Name("edit")).Click();
             return this;
+        }
+
+        public List<GroupData> GetGroupList()
+        {
+            Manager.Navigator.GoToGroupsPage();
+            var groups = Driver.FindElements(By.CssSelector("span.group")).Select(x => new GroupData(x.Text)).ToList();
+
+            return groups;
         }
 
         public bool IsGroupExist()

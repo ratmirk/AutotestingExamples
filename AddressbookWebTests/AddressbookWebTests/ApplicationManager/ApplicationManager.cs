@@ -5,7 +5,6 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 namespace AddressbookWebTests
-
 {
     public class ApplicationManager
     {
@@ -15,7 +14,7 @@ namespace AddressbookWebTests
         private ApplicationManager()
         {
             var option = new ChromeOptions();
-            option.AddArguments("headless");
+            option.AddExcludedArguments("enable-automation");
             Driver = new ChromeDriver(option);
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
 

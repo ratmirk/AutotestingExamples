@@ -66,7 +66,7 @@ namespace AddressbookWebTests
 
         public GroupHelper SelectGroup(int p)
         {
-            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{p}]")).Click();
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{p + 1}]")).Click();
             return this;
         }
 

@@ -6,7 +6,7 @@ namespace AddressbookWebTests
     public class ContactRemovalTests : AuthTestBase
     {
         [Test]
-        public void ContatctRemovalTest()
+        public void ContactRemovalTest()
         {
             Application.Contacts.Remove(1);
         }

@@ -41,9 +41,9 @@ namespace AddressbookWebTests
         {
             if (!Application.IsValueCreated)
             {
-                var newInsatnce = new ApplicationManager();
-                newInsatnce.Navigator.GoToHomePage();
-                Application.Value = newInsatnce;
+                var newInstance = new ApplicationManager();
+                newInstance.Navigator.GoToHomePage();
+                Application.Value = newInstance;
             }
 
             return Application.Value;

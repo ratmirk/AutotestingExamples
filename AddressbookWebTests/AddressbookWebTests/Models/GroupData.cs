@@ -31,14 +31,16 @@ namespace AddressbookWebTests
             return Name == other.Name;
         }
 
+        // ReSharper disable once NonReadonlyMemberInGetHashCode
         public override int GetHashCode() => Name.GetHashCode();
 
         public override string ToString() => Name;
 
         public int CompareTo(GroupData other) => other is null ? 1 : string.Compare(Name, other.Name, StringComparison.Ordinal);
 
-        public string Name { get; }
+        public string Name { get; set; }
         public string Header { get; }
         public string Footer { get; }
+        public string Id { get; set; }
     }
 }

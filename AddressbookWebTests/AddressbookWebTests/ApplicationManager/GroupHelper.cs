@@ -105,7 +105,9 @@ namespace AddressbookWebTests
         public List<GroupData> GetGroupList()
         {
             Manager.Navigator.GoToGroupsPage();
-            var groups = Driver.FindElements(By.CssSelector("span.group")).Select(x => new GroupData(x.Text)).ToList();
+            var groups = Driver.FindElements(By.CssSelector("span.group"))
+                .Select(x => new GroupData(x.Text){Id = x.FindElement(By.TagName("input")).GetAttribute("value")})
+                .ToList();
 
             return groups;
         }

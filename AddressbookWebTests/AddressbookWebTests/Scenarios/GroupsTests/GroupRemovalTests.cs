@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace AddressbookWebTests
@@ -11,13 +12,15 @@ namespace AddressbookWebTests
         {
             // Arrange
             GroupList = Application.Groups.GetGroupList();
-            GroupList.RemoveAt(0);
 
             // Act
             Application.Groups.Remove(0);
 
             // Assert
-            GroupList.Should().BeEquivalentTo(Application.Groups.GetGroupList(), options => options.Including(x => x.Name));
+            var newGroups = Application.Groups.GetGroupList();
+            newGroups.Select(x => x.Id).Should().NotContain(GroupList[0].Id);
+            GroupList.RemoveAt(0);
+            GroupList.Should().BeEquivalentTo(newGroups, options => options.Including(x => x.Name));
         }
     }
 }

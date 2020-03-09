@@ -74,6 +74,7 @@
     <Compile Include="Models\ContactData.cs" />
     <Compile Include="ApplicationManager\ContactHelper.cs" />
     <Compile Include="Scenarios\ContactsTests\ContactModificationTests.cs" />
+    <Compile Include="Scenarios\ContactsTests\ContactsTestBase.cs" />
     <Compile Include="Scenarios\GroupsTests\GroupCreationTests.cs" />
     <Compile Include="Models\GroupData.cs" />
     <Compile Include="ApplicationManager\GroupHelper.cs" />

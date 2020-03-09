@@ -35,6 +35,8 @@ namespace AddressbookWebTests
 
             // Act
             Application.Groups.Modify(0, newGroupData);
+
+            // Assert
             var newGroupList = Application.Groups.GetGroupList();
             GroupList.Should()
                 .BeEquivalentTo(newGroupList, options => options.Including(x => x.Name));

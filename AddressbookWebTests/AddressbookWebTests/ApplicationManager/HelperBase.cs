@@ -20,16 +20,14 @@ namespace AddressbookWebTests
             return this;
         }
 
-        public void Type(By locator, string text)
+        protected void Type(By locator, string text)
         {
-            if (text != null)
-            {
-                Driver.FindElement(locator).Clear();
-                Driver.FindElement(locator).SendKeys(text);
-            }
+            if (text == null) return;
+            Driver.FindElement(locator).Clear();
+            Driver.FindElement(locator).SendKeys(text);
         }
 
-        public bool IsElementPresent(By locator)
+        protected bool IsElementPresent(By locator)
         {
             try
             {

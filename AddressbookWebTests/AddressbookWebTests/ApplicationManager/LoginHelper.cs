@@ -27,7 +27,7 @@ namespace AddressbookWebTests
                    == $"({account.Username})";
         }
 
-        public bool IsLoggedIn()
+        private bool IsLoggedIn()
         {
             return IsElementPresent(By.Name("logout"));
         }

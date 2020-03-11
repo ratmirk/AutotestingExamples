@@ -106,7 +106,7 @@ namespace AddressbookWebTests
             return contacts;
         }
 
-        public bool IsContactExist()
+        private bool IsContactExist()
         {
             return IsElementPresent(By.Name("selected[]"));
         }

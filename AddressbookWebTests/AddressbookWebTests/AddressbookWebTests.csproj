@@ -73,6 +73,7 @@
     <Compile Include="Scenarios\ContactsTests\ContactCreationTests.cs" />
     <Compile Include="Models\ContactData.cs" />
     <Compile Include="ApplicationManager\ContactHelper.cs" />
+    <Compile Include="Scenarios\ContactsTests\ContactInfoTests.cs" />
     <Compile Include="Scenarios\ContactsTests\ContactModificationTests.cs" />
     <Compile Include="Scenarios\ContactsTests\ContactsTestBase.cs" />
     <Compile Include="Scenarios\GroupsTests\GroupCreationTests.cs" />

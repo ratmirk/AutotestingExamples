@@ -34,6 +34,12 @@ namespace AddressbookWebTests
             return this;
         }
 
+        public ContactHelper View(int position)
+        {
+            Driver.FindElement(By.CssSelector($"tr:nth-child({position + 2}) a[href*='view'] ")).Click();
+            return this;
+        }
+
         public ContactHelper SubmitContactModification()
         {
             Driver.FindElement(By.Name("update")).Click();
@@ -104,6 +110,68 @@ namespace AddressbookWebTests
                 .ToList();
 
             return contacts;
+        }
+
+        public ContactData GetContactInfoFromTable(int position)
+        {
+            Manager.Navigator.GoToHomePage();
+
+            var cells = Driver.FindElements(By.Name("entry"))[position].FindElements(By.TagName("td"));
+            var lastName = cells[1].Text;
+            var firstName = cells[2].Text;
+            var address = cells[3].Text;
+            var allEmails = cells[4].Text;
+            var allPhones = cells[5].Text;
+
+            return new ContactData
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                AllEmails = allEmails,
+                AllPhones = allPhones
+            };
+        }
+
+        public ContactData GetContactInfoFromForm(int position)
+        {
+            Manager.Navigator.GoToHomePage();
+            Edit(position);
+
+            var firstName = Driver.FindElement((By.Name("firstname"))).GetAttribute("value");
+            var lastName = Driver.FindElement((By.Name("lastname"))).GetAttribute("value");
+            var address = Driver.FindElement((By.Name("address"))).GetAttribute("value");
+
+            var homePhone = Driver.FindElement((By.Name("home"))).GetAttribute("value");
+            var mobilePhone = Driver.FindElement((By.Name("mobile"))).GetAttribute("value");
+            var workPhone = Driver.FindElement((By.Name("work"))).GetAttribute("value");
+
+            var email = Driver.FindElement((By.Name("email"))).GetAttribute("value");
+            var email2 = Driver.FindElement((By.Name("email2"))).GetAttribute("value");
+            var email3 = Driver.FindElement((By.Name("email3"))).GetAttribute("value");
+
+            return new ContactData
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                HomePhone = homePhone,
+                MobilePhone = mobilePhone,
+                WorkPhone = workPhone,
+                Email = email,
+                Email2 = email2,
+                Email3 = email3
+            };
+        }
+
+        public ContactData GetContactInfoFromView(int position)
+        {
+            Manager.Navigator.GoToHomePage();
+            View(position);
+
+            // TODO 
+            var info = Driver.FindElement(By.Id("content")).Text;
+            return new ContactData{AllInfo = info};
         }
 
         private bool IsContactExist()

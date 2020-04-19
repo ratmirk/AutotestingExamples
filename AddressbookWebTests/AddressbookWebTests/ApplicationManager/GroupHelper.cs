@@ -18,13 +18,13 @@ namespace AddressbookWebTests
             return this;
         }
 
-        public GroupHelper Modify(int p, GroupData newGroupData)
+        public GroupHelper Modify(int p, GroupData groupData)
         {
             Manager.Navigator.GoToGroupsPage();
             CreateGroupIfNotExist();
             SelectGroup(p);
             InitGroupModification();
-            FillGroupForm(newGroupData);
+            FillGroupForm(groupData);
             SubmitGroupModification();
             ReturnToGroupsPage();
             return this;

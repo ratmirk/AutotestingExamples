@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using OpenQA.Selenium;
 
 namespace AddressbookWebTests
@@ -18,12 +19,12 @@ namespace AddressbookWebTests
             return this;
         }
 
-        public ContactHelper Modify(int position, ContactData newContactData)
+        public ContactHelper Modify(int position, ContactData contactData)
         {
             Manager.Navigator.GoToHomePage();
             CreateContactIfNotExist();
             Edit(position);
-            FillContactForm(newContactData);
+            FillContactForm(contactData);
             SubmitContactModification();
             return this;
         }
@@ -169,9 +170,24 @@ namespace AddressbookWebTests
             Manager.Navigator.GoToHomePage();
             View(position);
 
-            // TODO 
             var info = Driver.FindElement(By.Id("content")).Text;
             return new ContactData{AllInfo = info};
+        }
+
+        public void Search(string term)
+        {
+            Manager.Navigator.GoToHomePage();
+            Driver.FindElement(By.CssSelector("#search-az input")).SendKeys(term);
+        }
+
+        public int NumberOfSearchResults
+        {
+            get
+            {
+                var text = Driver.FindElement(By.TagName("label")).Text;
+                var match = new Regex(@"\d+").Match(text);
+                return int.Parse(match.Value);
+            }
         }
 
         private bool IsContactExist()

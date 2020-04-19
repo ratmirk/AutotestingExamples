@@ -13,7 +13,7 @@ namespace AddressbookWebTests
 
         public GroupData()
         {
-            Name = "Autocreated";
+            Name = "AutoCreated";
         }
 
         public bool Equals(GroupData other)

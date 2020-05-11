@@ -90,6 +90,7 @@
     <Compile Include="Scenarios\GroupsTests\GroupsTestBase.cs" />
     <Compile Include="Scenarios\LoginTests.cs" />
     <Compile Include="Scenarios\TestBase.cs" />
+    <Compile Include="Utilites\Randomizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

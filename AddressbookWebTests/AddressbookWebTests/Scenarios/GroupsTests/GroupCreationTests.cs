@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace AddressbookWebTests
@@ -6,11 +7,10 @@ namespace AddressbookWebTests
     [TestFixture]
     public class GroupCreationTests : GroupsTestBase
     {
-        [Test]
-        public void GroupCreationTest()
+        [Test, TestCaseSource(nameof(RandomGroupDataProvider))]
+        public void GroupCreationTest(GroupData group)
         {
             // Arrange
-            var group = new GroupData("group_name", "group_header", "group_footer");
             GroupList = Application.Groups.GetGroupList();
             GroupList.Add(group);
 
